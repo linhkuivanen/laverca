@@ -83,21 +83,22 @@ specified in Finland.
          (JvmSsl)
     3. Strong mutual identification and encryption between AP and AE including a password (AP_PWD).
          (JvmSsl)
-    4. Supported message formats are: MSS_SignatureReq, MSS_SignatureResp, MSS_StatusReq, MSS_StatusResp, MSS_ReceiptReq and MSS_ReceiptResp.
+    4. Support for custom SSL configuration by Axis EngineConfiguration interface, e.g. by using [Axistools library](https://wiki.apache.org/ws/FrontPage/Axis/DynamicSSLConfig). (EtsiClient)
+    5. Supported message formats are: MSS_SignatureReq, MSS_SignatureResp, MSS_StatusReq, MSS_StatusResp, MSS_ReceiptReq and MSS_ReceiptResp.
          (FiComClient, EtsiClient)
-    5. Supported character maps in service requests are UTF-8, GSM and UCS2.
+    6. Supported character maps in service requests are UTF-8, GSM and UCS2.
          (FiComCharsetLimiter)
-    6. Supported character maps in client device are GSM 03.38 and UCS2.
+    7. Supported character maps in client device are GSM 03.38 and UCS2.
          (FiComCharsetLimiter)
-    7. Provides all 6 different signature provides defined in FiCom 2.0.
+    8. Provides all 6 different signature provides defined in FiCom 2.0.
          (FiComClient, FiComSignatureProfiles)
-    8. The signature profiles are used for choosing a specified service.
+    9. The signature profiles are used for choosing a specified service.
          (FiComClient, FiComSignatureProfiles)
-    9. The user can deny usage of any signature profile on the client device.
+    10. The user can deny usage of any signature profile on the client device.
          (FiComErrorCodes)
-    10. Supports all of the FiCom 2.0 additional services.
+    11. Supports all of the FiCom 2.0 additional services.
          (FiComClient)
-    11. The format of the digital signature is base64-encoding and PKCS#7 or PKCS#1 with the users certificate.
+    12. The format of the digital signature is base64-encoding and PKCS#7 or PKCS#1 with the users certificate.
          (FiComResponse)
 
 
