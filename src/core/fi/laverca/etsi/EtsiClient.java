@@ -27,6 +27,7 @@ import java.util.Date;
 import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.AxisFault;
+import org.apache.axis.EngineConfiguration;
 import org.apache.axis.client.Stub;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -75,7 +76,7 @@ public class EtsiClient {
     String apPwd = null;
 
     // MSSP AE connection settings
-    final MSS_SignatureServiceLocator mssService = new MSS_SignatureServiceLocator();
+    final MSS_SignatureServiceLocator mssService;
     URL MSSP_SI_URL = null;
     URL MSSP_RC_URL = null;
     URL MSSP_HS_URL = null;
@@ -110,23 +111,43 @@ public class EtsiClient {
                        String msspHandshakeUrl)
     throws IllegalArgumentException
     {
+        this(apId, apPwd, msspSignatureUrl, msspStatusUrl, msspReceiptUrl, msspRegistrationUrl, msspProfileUrl, msspHandshakeUrl, null);
+    }
+
+    public EtsiClient(String apId,             // AP settings
+                        String apPwd,
+                        String msspSignatureUrl, // AE connection settings
+                        String msspStatusUrl,
+                        String msspReceiptUrl,
+                        String msspRegistrationUrl,
+                        String msspProfileUrl,
+                        String msspHandshakeUrl,
+                        EngineConfiguration engineConfiguration)
+            throws IllegalArgumentException
+    {
         if (apId != null)
             this.apId = apId;
         else
             throw new IllegalArgumentException("null apId not allowed.");
-        
+
         if (apPwd != null)
             this.apPwd = apPwd;
         else
             throw new IllegalArgumentException("null apPwd not allowed.");
 
         this.setAeAddress(msspSignatureUrl,
-                          msspStatusUrl,
-                          msspReceiptUrl,
-                          msspRegistrationUrl,
-                          msspProfileUrl,
-                          msspHandshakeUrl);
+                msspStatusUrl,
+                msspReceiptUrl,
+                msspRegistrationUrl,
+                msspProfileUrl,
+                msspHandshakeUrl);
 
+        if (engineConfiguration == null) {
+            mssService = new MSS_SignatureServiceLocator();
+        }
+        else {
+            mssService = new MSS_SignatureServiceLocator(engineConfiguration);
+        }
     }
     
     /**
@@ -496,4 +517,11 @@ public class EtsiClient {
         }
     }
 
+    /**
+     * Sets custom SSL engine, e.g. by using SSL
+     *
+     */
+    public void setSSLEngine(EngineConfiguration engineConfiguration) {
+        mssService.setEngineConfiguration(engineConfiguration);
+    }
 }
