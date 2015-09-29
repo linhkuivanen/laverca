@@ -83,7 +83,7 @@ specified in Finland.
          (JvmSsl)
     3. Strong mutual identification and encryption between AP and AE including a password (AP_PWD).
          (JvmSsl)
-    4. Support for custom SSL configuration by Axis EngineConfiguration interface, e.g. by using [Axistools library](https://wiki.apache.org/ws/FrontPage/Axis/DynamicSSLConfig). (EtsiClient)
+    4. Support for custom SSL configuration by Axis EngineConfiguration interface, e.g. by using Axistools library, see  https://wiki.apache.org/ws/FrontPage/Axis/DynamicSSLConfig. (EtsiClient)
     5. Supported message formats are: MSS_SignatureReq, MSS_SignatureResp, MSS_StatusReq, MSS_StatusResp, MSS_ReceiptReq and MSS_ReceiptResp.
          (FiComClient, EtsiClient)
     6. Supported character maps in service requests are UTF-8, GSM and UCS2.
